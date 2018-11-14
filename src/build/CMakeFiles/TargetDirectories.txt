@@ -1,3 +1,0 @@
-/home/kaiyin/cProjects/elves/src/build/CMakeFiles/rebuild_cache.dir
-/home/kaiyin/cProjects/elves/src/build/CMakeFiles/elves.dir
-/home/kaiyin/cProjects/elves/src/build/CMakeFiles/edit_cache.dir

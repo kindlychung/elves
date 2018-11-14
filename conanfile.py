@@ -1,4 +1,5 @@
 from conans import ConanFile, CMake
+from conans.tools import os_info, SystemPackageTool
 from pathlib import Path
 import os
 
@@ -46,12 +47,20 @@ class ElvesConan(ConanFile):
     def deploy(self):
         self.copy("*", src=bin, dst=conan_bin_dir)
 
-    def package_info(self):
-        self.do_package_info()
-        if self.options.system:
-            self.cpp_info.includedirs = ["/usr/include"]
-            self.cpp_info.libdirs = ["/usr/lib/x86_64-linux-gnu/libbsd.so"]
-            if len(str(self.options.root)) != 0:
-                self.cpp_info.includedirs.append(
-                    str(self.options.root) + "/include")
-                self.cpp_info.libdirs.append(str(self.options.root) + "/lib")
+    # def package_info(self):
+    #     self.do_package_info()
+    #     if self.options.system:
+    #         self.cpp_info.includedirs = ["/usr/include"]
+    #         self.cpp_info.libdirs = ["/usr/lib/x86_64-linux-gnu/libbsd.so"]
+    #         if len(str(self.options.root)) != 0:
+    #             self.cpp_info.includedirs.append(
+    #                 str(self.options.root) + "/include")
+    #             self.cpp_info.libdirs.append(str(self.options.root) + "/lib")
+
+    def system_requirements(self):
+        pack_name = None
+        if os_info.linux_distro == "ubuntu":
+            pack_name = "libbsd-dev"
+        if pack_name:
+            installer = SystemPackageTool()
+            installer.install(pack_name)

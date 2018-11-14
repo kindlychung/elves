@@ -1,1 +1,0 @@
-/usr/bin/c++    -m64 -O3 -DNDEBUG        -rdynamic CMakeFiles/elves.dir/main.cpp.o  -o bin/elves  -L/home/kaiyin/.conan/data/libelf/0.8.13/bincrafters/stable/package/ec336a8e46e06995be9ad34dc1a7477dff42a7df/lib -Wl,-rpath,/home/kaiyin/.conan/data/libelf/0.8.13/bincrafters/stable/package/ec336a8e46e06995be9ad34dc1a7477dff42a7df/lib -lelf -lbsd 

@@ -59,6 +59,24 @@ int main(int argc, char const* argv[]) {
         vis(bytes, elf_id[i], VIS_WHITE, 0);
         printf(" ['%s' %X]", bytes, elf_id[i]);
     }
+    printf("\n");
+
+#define PrintFormat "    %-20s 0x%x\n"
+#define PrintField(N)                                      \
+    do {                                                   \
+        printf(PrintFormat, #N, (uintmax_t)gelf_header.N); \
+    } while (0);
+
+    PrintField(e_type);
+    PrintField(e_machine);
+    PrintField(e_version);
+    PrintField(e_entry);
+    PrintField(e_phoff);
+    PrintField(e_shoff);
+    PrintField(e_flags);
+    PrintField(e_ehsize);
+    PrintField(e_phentsize);
+    PrintField(e_shentsize);
     elf_end(elf_pointer);
     close(fd);
     return 0;
